@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout_Mng_Edit_About.cshtml";
+}
+@model About_ViewModels
+@{
+   
+    foreach (var item in ViewData["AboutList"] as List<About>)
+    {
+<form asp-action="Update_About" asp-controller="Manager">
+<div class="container" >
+    <div class="section-title">
+        <h2 style="font-size:80px">Edit</h2>
+    </div>
+    <div class="section-title">
+        <h2>About</h2>
+    </div>
+
+    <div class="col-lg-6" data-aos="fade-right" style="padding:40px; border-bottom:groove">
+        <img src="~/Layout/assets/img/hero-bg.jpg" class="img-fluid rounded" alt="">
+        <input type="file" class="btn btn-success col-12 rounded" style="margin-top:10px" asp-for="HeroImg" >
+
+    </div>
+    <div class="row" style="padding:40px; border-bottom:groove">
+        <div class="col-lg-4" data-aos="fade-right">
+            <img src="~/Layout/assets/img/profile-img.jpg" class="img-fluid rounded" alt="">
+            <input type="file" class="btn btn-success col-12 rounded" style="margin-top:10px" asp-for="ProfileImg">
+
+        </div>
+
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <input value="@item.Birthday" asp-for="Birthday" autocomplete="off"> </li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <input value="@item.Website" asp-for="Website" autocomplete="off"></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <input value="@item.PhoneNumber" asp-for="PhoneNumber" autocomplete="off"></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <input value="@item.Age" asp-for="Age" autocomplete="off"></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <input value="@item.Email" asp-for="Email" autocomplete="off"></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <input value="@item.City" asp-for="City" autocomplete="off"></li>
+                    </ul>
+                </div>
+            </div>
+            <input value="@item.Id" type="hidden" name="id"  />
+            <button class="btn col-lg-6" value="@item.Id">Save Changes</button>
+        </div>
+    </div>
+
+</div>
+</form>
+}
+}

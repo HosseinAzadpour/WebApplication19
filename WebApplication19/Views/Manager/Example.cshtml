@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "Example";
+    Layout = "~/Views/Shared/_Layout_Mng_Edit_Example.cshtml";
+}
+@model Example_ViewModels
+<div class="section-title container">
+    
+    <h2>Some Examples Of Our Work</h2>
+    <form asp-action="Add_Example" asp-controller="Manager">
+    <div class="container">
+       <div class="row">
+       <div class="col-6">
+          <div class="row">
+              <div class="col-4">
+                            <label ><b>Title:</b></label><br />
+                            <label style="margin-top:18px"><b>Subject:</b></label><br />
+                            <label style="margin-top:18px"><b>Website:</b></label><br />
+                            <label style="margin-top:15px"><b>NumberOfPage:</b></label><br />
+              </div>
+                        <div class="col-2">
+                            <input  name="Title" asp-for="Title" autocomplete="off" autofocus /><br />
+                            <input style="margin-top:10px" name="Subject" asp-for="Subject" autocomplete="off" /><br />
+                            <input style="margin-top:10px" name="Website" asp-for="Website" autocomplete="off" /><br />
+                            <input style="margin-top:10px" name="NumberOfPage" asp-for="NumberOfPage" autocomplete="off" /><br />
+
+               </div>
+               </div>
+        </div>
+                <div class="col-6" >
+                    <strong style="margin-top:10px">Add Images:</strong><br />
+                    <input style="margin-top:10px" type="file" name="ExampleImg1" asp-for="ExampleImg1" /><br />
+                     <input style="margin-top:10px" type="file" name="ExampleImg2" asp-for="ExampleImg2" /><br />
+                     <input style="margin-top:10px" type="file" name="ExampleImg3" asp-for="ExampleImg3" /><br />
+                </div>
+    </div>
+    <div></div>
+    </div>
+        <div style="border-bottom:groove;padding:40px;"> <button class="btn" style="margin-top:30px;margin-left:30px">+Add Example</button>
+        </div>
+   
+    </form>
+    <form asp-action="Delete_Example" asp-controller="Manager">
+    <button value="DeleteExampleIds" class="btn" style="margin-left:30px ;margin-top:100px;">-Remove Skills</button>
+
+    @foreach (var item in ViewData["ExampleList"] as List<Example>)
+    {
+    <div class="col-lg-12 pt-4 pt-lg-0 content " data-aos="fade-left" style="margin-top:30px;margin-left:30px;">
+                
+@*        <input type="checkbox" name="DeleteExampleIds" value="@item.Id" style="margin-right:10px;" /><label><b>@item.Title</b></label>
+*@                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input type="checkbox" name="DeleteExampleIds" value="@item.Id" style="margin-right:10px;" />
+                    </div>
+                    <input type="text" class="form-control-sm" value="@item.Title">
+                </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Subject:</strong> <span>@item.Subject</span></li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>@item.Website</span></li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Number Of Page:</strong> <span>@item.NumberOfPage</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" data-aos="fade-right" style="border-bottom:groove">
+            <div style="padding:40px;">
+                   <img id="myImg" src="" alt="Northern Lights, Norway" width="auto" height="200">
+                    <img id="myImg" src=""  alt="Northern Lights, Norway" width="auto" height="200">
+                    <img id="myImg" src="" alt="Northern Lights, Norway" width="auto" height="200">
+           </div>
+        </div>
+    </div>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+    }
+    
+   </form>
+</div>
+   
+
